@@ -1,5 +1,5 @@
 import pandas as pd
-import wandb
+import day_18
 import gdown
 from gdown.exceptions import FileURLRetrievalError
 
@@ -41,7 +41,7 @@ def run():
     w3 = 0
     lr = 0.00001
     epochs = 1000
-    wandb.init(
+    day_18.init(
         project="demo-linear-regression",
         config={
             "learning_rate": lr,
@@ -55,13 +55,13 @@ def run():
     x3_train = dataset["Newspaper"]
     y_train = dataset["Sales"]
     sample = len(y_train)
-    wandb.run.log({"Dataset": wandb.Table(dataframe=dataset)})
+    day_18.run.log({"Dataset": day_18.Table(dataframe=dataset)})
 
     for _ in range(epochs):
         y_hat = x1_train*w1 + x2_train*w2 + x3_train*w3 + b
         y = y_train
         loss = (y_hat - y) * (y_hat - y)
-        wandb.log({"loss": loss.to_numpy()})
+        day_18.log({"loss": loss.to_numpy()})
 
         dw1, db1 = gradient(y_hat, y, x1_train)
         dw2, db2 = gradient(y_hat, y, x2_train)
@@ -71,7 +71,7 @@ def run():
         (w2, b) = update_weight(w2, b, lr, dw2, db2, sample)
         (w3, b) = update_weight(w3, b, lr, dw3, db3, sample)
 
-    wandb.finish()
+    day_18.finish()
 
 
 run()
