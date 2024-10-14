@@ -28,10 +28,14 @@ df_store = pd.read_csv("../100_pandas/data/store.csv", dtype=dtype)
 df_geocode = pd.read_csv("../100_pandas/data/geocode.csv", dtype=dtype)
 
 
+# P-001: Display the first 10 rows of all items from the receipt details data (df_receipt) to visually confirm what
+# kind of data it contains.
 def p_001():
     print(df_receipt.head(10))
 
 
+# P-002: From the receipt details data (df_receipt), specify the columns in the order of sales date (sales_ymd),
+# customer ID (customer_id), product code (product_cd), and sales amount (amount), and display 10 rows.
 def p_002():
     data = df_receipt[['sales_ymd', 'customer_id', 'product_cd', 'amount']]
     print(data.head(10))
