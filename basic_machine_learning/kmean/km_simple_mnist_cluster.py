@@ -2,7 +2,7 @@ import numpy as np
 from mnist import MNIST
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
-from basic_maching_learning.display_network import display_network
+from basic_machine_learning.display_network import display_network
 import scipy.misc
 
 
